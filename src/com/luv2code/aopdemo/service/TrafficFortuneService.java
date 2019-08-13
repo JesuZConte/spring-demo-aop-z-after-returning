@@ -1,5 +1,6 @@
 package com.luv2code.aopdemo.service;
 
+import org.omg.SendingContext.RunTime;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -19,5 +20,13 @@ public class TrafficFortuneService {
 
         // return a fortune
         return "Expect heavy traffic this morning";
+    }
+
+    public String getFortune(boolean tripWire) {
+        if (tripWire) {
+            throw new RuntimeException("Major accident! Highway is closed!");
+        }
+
+        return getFortune();
     }
 }
